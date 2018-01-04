@@ -12,6 +12,8 @@ Created on Wed Jan  3 14:22:47 2018
 #3 — lizard
 #4 — scissors
 
+import random
+
 def name_to_number(name) :
     if(name=="rock"):
         return 0
@@ -42,8 +44,25 @@ def number_to_name(number):
         return "Invalid number"
     
 def rpsls(player_choice):
-    choice_number=name_to_number(player_choice)
-    print(choice_number)
+    player_choice_number=name_to_number(player_choice)
+    computer_choice_number=random.randrange(0,4)
+    
+    #result = (PLayerChoice - Computer Choice modulo 5)
+    #if result = 1 or 2 --- Player wins
+    #else if result = 3 or 4-- Computer wins
+    #else -- It is a tie
+    print("Player Chooses "+player_choice)
+    print("Computer Chooses "+number_to_name(computer_choice_number))
+    result = (player_choice_number - computer_choice_number)%5
+    
+    if(result==1 or result == 2):
+        print("Player Wins!!")
+    elif(result==3 or result==4):
+        print("Computer Wins!!")
+    else:
+        print("Player and computer tie!")
+    
+    print()
     return 0
 
 rpsls("spock")
@@ -51,5 +70,5 @@ rpsls("paper")
 rpsls("lizard")
 rpsls("scissors")
 rpsls("rock")
-rpsls(4)
+
         
